@@ -1,0 +1,33 @@
+# MCP Linux Common Utility Server Configuration
+
+server:
+  name: mcp-lcu-server
+  transport: sse  # stdio or sse
+  port: 8000
+  host: 127.0.0.1
+
+monitoring:
+  enabled: true
+  interval: 30  # seconds
+  metrics:
+    - cpu
+    - memory
+    - disk
+    - network
+
+filesystem:
+  allowed_paths:
+    - /
+  max_file_size: 10485760  # 10MB
+
+network:
+  allow_downloads: true
+  allow_uploads: true
+  max_download_size: 104857600  # 100MB
+  max_upload_size: 10485760  # 10MB
+  allowed_domains:
+    - "*"  # Allow all domains
+
+process:
+  allow_kill: false
+  allowed_users: []

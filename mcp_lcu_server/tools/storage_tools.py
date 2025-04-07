@@ -30,7 +30,7 @@ def register_storage_tools(mcp: FastMCP) -> None:
     storage_ops = StorageOperations()
     
     @mcp.tool()
-    def list_disks() -> str:
+    def storage_list_disks() -> str:
         """List physical disks.
         
         Returns:
@@ -46,7 +46,7 @@ def register_storage_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def list_partitions() -> str:
+    def storage_list_partitions() -> str:
         """List partitions.
         
         Returns:
@@ -62,7 +62,7 @@ def register_storage_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def list_volumes() -> str:
+    def storage_list_volumes() -> str:
         """List logical volumes (LVM, MD RAID, etc.).
         
         Returns:
@@ -78,7 +78,7 @@ def register_storage_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_disk_usage(path: str = "/") -> str:
+    def storage_get_disk_usage(path: str = "/") -> str:
         """Get disk usage for a path.
         
         Args:
@@ -97,7 +97,7 @@ def register_storage_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_disk_io_stats() -> str:
+    def storage_get_disk_io_stats() -> str:
         """Get disk I/O statistics.
         
         Returns:
@@ -113,7 +113,7 @@ def register_storage_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_disk_smart_info(device: str) -> str:
+    def storage_get_disk_smart_info(device: str) -> str:
         """Get SMART information for a disk.
         
         Args:
@@ -132,7 +132,7 @@ def register_storage_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def analyze_storage_usage() -> str:
+    def storage_analyze_storage_usage() -> str:
         """Analyze storage usage across the system.
         
         This function provides a comprehensive analysis of storage usage:

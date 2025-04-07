@@ -36,7 +36,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
     fs_ops = FilesystemOperations(allowed_paths=allowed_paths, max_file_size=max_file_size)
     
     @mcp.tool()
-    def list_directory(path: str, recursive: bool = False) -> str:
+    def filesystem_list_directory(path: str, recursive: bool = False) -> str:
         """List contents of a directory.
         
         Args:
@@ -56,7 +56,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_file_info(path: str) -> str:
+    def filesystem_get_file_info(path: str) -> str:
         """Get file information.
         
         Args:
@@ -75,7 +75,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def read_file(path: str, binary: bool = False) -> str:
+    def filesystem_read_file(path: str, binary: bool = False) -> str:
         """Read file contents.
         
         Args:
@@ -104,7 +104,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def write_file(path: str, content: str, mode: str = "w", make_executable: bool = False) -> str:
+    def filesystem_write_file(path: str, content: str, mode: str = "w", make_executable: bool = False) -> str:
         """Write content to a file.
         
         Args:
@@ -141,7 +141,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"success": False, "error": str(e)})
     
     @mcp.tool()
-    def delete_file(path: str) -> str:
+    def filesystem_delete_file(path: str) -> str:
         """Delete a file or directory.
         
         Args:
@@ -160,7 +160,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"success": False, "error": str(e)})
     
     @mcp.tool()
-    def copy_file(source: str, destination: str) -> str:
+    def filesystem_copy_file(source: str, destination: str) -> str:
         """Copy a file or directory.
         
         Args:
@@ -180,7 +180,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"success": False, "error": str(e)})
     
     @mcp.tool()
-    def move_file(source: str, destination: str) -> str:
+    def filesystem_move_file(source: str, destination: str) -> str:
         """Move a file or directory.
         
         Args:
@@ -200,7 +200,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"success": False, "error": str(e)})
     
     @mcp.tool()
-    def create_directory(path: str, mode: int = 0o755) -> str:
+    def filesystem_create_directory(path: str, mode: int = 0o755) -> str:
         """Create a directory.
         
         Args:
@@ -220,7 +220,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"success": False, "error": str(e)})
     
     @mcp.tool()
-    def create_symlink(source: str, destination: str) -> str:
+    def filesystem_create_symlink(source: str, destination: str) -> str:
         """Create a symbolic link.
         
         Args:
@@ -240,7 +240,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"success": False, "error": str(e)})
     
     @mcp.tool()
-    def search_files(directory: str, 
+    def filesystem_search_files(directory: str, 
                     pattern: str, 
                     recursive: bool = True,
                     case_sensitive: bool = False,
@@ -269,7 +269,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def search_file_contents(directory: str, 
+    def filesystem_search_file_contents(directory: str, 
                             pattern: str, 
                             file_pattern: str = "*", 
                             recursive: bool = True,
@@ -301,7 +301,7 @@ def register_filesystem_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def analyze_directory_usage(path: str) -> str:
+    def filesystem_analyze_directory_usage(path: str) -> str:
         """Analyze directory usage and provide statistics.
         
         Args:

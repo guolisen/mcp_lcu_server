@@ -36,7 +36,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
         monitoring_ops.start_monitoring()
     
     @mcp.tool()
-    def start_monitoring() -> str:
+    def monitor_start_monitoring() -> str:
         """Start system monitoring.
         
         Returns:
@@ -55,7 +55,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"success": False, "error": str(e)})
     
     @mcp.tool()
-    def stop_monitoring() -> str:
+    def monitor_stop_monitoring() -> str:
         """Stop system monitoring.
         
         Returns:
@@ -74,7 +74,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"success": False, "error": str(e)})
     
     @mcp.tool()
-    def get_monitoring_status() -> str:
+    def monitor_get_monitoring_status() -> str:
         """Get monitoring status.
         
         Returns:
@@ -90,7 +90,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_system_status() -> str:
+    def monitor_get_system_status() -> str:
         """Get system status.
         
         Returns:
@@ -106,7 +106,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def check_system_health() -> str:
+    def monitor_check_system_health() -> str:
         """Check system health.
         
         Returns:
@@ -122,7 +122,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_cpu_metrics(count: int = 60) -> str:
+    def monitor_get_cpu_metrics(count: int = 60) -> str:
         """Get CPU metrics.
         
         Args:
@@ -141,7 +141,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_memory_metrics(count: int = 60) -> str:
+    def monitor_get_memory_metrics(count: int = 60) -> str:
         """Get memory metrics.
         
         Args:
@@ -160,7 +160,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_disk_metrics(count: int = 60) -> str:
+    def monitor_get_disk_metrics(count: int = 60) -> str:
         """Get disk metrics.
         
         Args:
@@ -179,7 +179,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_network_metrics(count: int = 60) -> str:
+    def monitor_get_network_metrics(count: int = 60) -> str:
         """Get network metrics.
         
         Args:
@@ -198,7 +198,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_system_metrics(count: int = 60) -> str:
+    def monitor_get_system_metrics(count: int = 60) -> str:
         """Get system metrics.
         
         Args:
@@ -217,7 +217,7 @@ def register_monitoring_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def analyze_system_performance() -> str:
+    def monitor_analyze_system_performance() -> str:
         """Analyze system performance and provide insights.
         
         This function collects comprehensive system data and provides analysis:

@@ -47,7 +47,7 @@ class FilesystemResources:
                      name="Directory Listing", 
                      description="List contents of a directory",
                      mime_type="application/json")
-        def list_directory(path: str) -> str:
+        def filesystem_list_directory(path: str) -> str:
             """List contents of a directory."""
             try:
                 # URL decode path
@@ -65,7 +65,7 @@ class FilesystemResources:
                      name="Recursive Directory Listing", 
                      description="List contents of a directory recursively",
                      mime_type="application/json")
-        def list_directory_recursive(path: str) -> str:
+        def filesystem_list_directory_recursive(path: str) -> str:
             """List contents of a directory recursively."""
             try:
                 # URL decode path
@@ -83,7 +83,7 @@ class FilesystemResources:
                      name="File Information", 
                      description="Get information about a file or directory",
                      mime_type="application/json")
-        def get_file_info(path: str) -> str:
+        def filesystem_get_file_info(path: str) -> str:
             """Get information about a file or directory."""
             try:
                 # URL decode path
@@ -101,7 +101,7 @@ class FilesystemResources:
                      name="File Contents", 
                      description="Get contents of a file",
                      mime_type="text/plain")
-        def get_file_contents(path: str) -> str:
+        def filesystem_get_file_contents(path: str) -> str:
             """Get contents of a file."""
             try:
                 # URL decode path
@@ -144,7 +144,7 @@ class FilesystemResources:
                      name="Directory Usage Analysis", 
                      description="Analyze directory usage",
                      mime_type="application/json")
-        def analyze_directory_usage(path: str) -> str:
+        def filesystem_analyze_directory_usage(path: str) -> str:
             """Analyze directory usage."""
             try:
                 # URL decode path

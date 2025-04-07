@@ -30,7 +30,7 @@ def register_memory_tools(mcp: FastMCP) -> None:
     memory_ops = MemoryOperations()
     
     @mcp.tool()
-    def get_memory_info() -> str:
+    def memory_get_memory_info() -> str:
         """Get detailed memory information.
         
         Returns:
@@ -54,7 +54,7 @@ def register_memory_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_memory_usage() -> str:
+    def memory_get_memory_usage() -> str:
         """Get memory usage.
         
         Returns:
@@ -74,7 +74,7 @@ def register_memory_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_swap_info() -> str:
+    def memory_get_swap_info() -> str:
         """Get detailed swap information.
         
         Returns:
@@ -97,7 +97,7 @@ def register_memory_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_swap_usage() -> str:
+    def memory_get_swap_usage() -> str:
         """Get swap usage.
         
         Returns:
@@ -117,7 +117,7 @@ def register_memory_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_memory_stats() -> str:
+    def memory_get_memory_stats() -> str:
         """Get comprehensive memory statistics.
         
         Returns:
@@ -137,7 +137,7 @@ def register_memory_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def analyze_memory_performance() -> str:
+    def memory_analyze_memory_performance() -> str:
         """Analyze memory performance and provide insights.
         
         This function collects comprehensive memory data and provides analysis:

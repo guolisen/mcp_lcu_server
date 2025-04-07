@@ -30,7 +30,7 @@ def register_cpu_tools(mcp: FastMCP) -> None:
     cpu_ops = CPUOperations()
     
     @mcp.tool()
-    def get_cpu_info() -> str:
+    def cpu_get_cpu_info() -> str:
         """Get detailed CPU information.
         
         Returns:
@@ -53,7 +53,7 @@ def register_cpu_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_cpu_usage(per_cpu: bool = False, interval: float = 0.1) -> str:
+    def cpu_get_cpu_usage(per_cpu: bool = False, interval: float = 0.1) -> str:
         """Get CPU usage percentage.
         
         Args:
@@ -79,7 +79,7 @@ def register_cpu_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_cpu_times(per_cpu: bool = False) -> str:
+    def cpu_get_cpu_times(per_cpu: bool = False) -> str:
         """Get CPU time spent in various modes.
         
         Args:
@@ -104,7 +104,7 @@ def register_cpu_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_load_average() -> str:
+    def cpu_get_load_average() -> str:
         """Get system load average.
         
         Returns:
@@ -120,7 +120,7 @@ def register_cpu_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_cpu_stats() -> str:
+    def cpu_get_cpu_stats() -> str:
         """Get CPU statistics.
         
         Returns:
@@ -136,7 +136,7 @@ def register_cpu_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def analyze_cpu_performance() -> str:
+    def cpu_analyze_cpu_performance() -> str:
         """Analyze CPU performance and provide insights.
         
         This function collects comprehensive CPU data and provides analysis:

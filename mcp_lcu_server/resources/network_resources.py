@@ -56,7 +56,7 @@ class NetworkResources:
                      name="Network Interfaces", 
                      description="Get network interfaces information",
                      mime_type="application/json")
-        def get_network_interfaces() -> str:
+        def network_get_network_interfaces() -> str:
             """Get network interfaces information."""
             try:
                 interfaces = self.net_ops.get_interfaces()
@@ -70,7 +70,7 @@ class NetworkResources:
                      name="Network Connections", 
                      description="Get network connections",
                      mime_type="application/json")
-        def get_network_connections() -> str:
+        def network_get_network_connections() -> str:
             """Get network connections."""
             try:
                 connections = self.net_ops.get_connections()
@@ -84,7 +84,7 @@ class NetworkResources:
                      name="Network Statistics", 
                      description="Get network statistics",
                      mime_type="application/json")
-        def get_network_stats() -> str:
+        def network_get_network_stats() -> str:
             """Get network statistics."""
             try:
                 stats = self.net_ops.get_stats()
@@ -98,7 +98,7 @@ class NetworkResources:
                      name="Ping Host",
                      description="Ping a host",
                      mime_type="application/json")
-        def ping_host(host: str) -> str:
+        def network_ping_host(host: str) -> str:
             """Ping a host."""
             try:
                 # URL decode host
@@ -115,7 +115,7 @@ class NetworkResources:
                      name="Traceroute Host",
                      description="Trace route to a host",
                      mime_type="application/json")
-        def traceroute_host(host: str) -> str:
+        def network_traceroute_host(host: str) -> str:
             """Trace route to a host."""
             try:
                 # URL decode host
@@ -132,7 +132,7 @@ class NetworkResources:
                      name="Network Analysis",
                      description="Analyze network configuration and connectivity",
                      mime_type="application/json")
-        def analyze_network() -> str:
+        def network_analyze_network() -> str:
             """Analyze network configuration and connectivity."""
             try:
                 # Get network interfaces

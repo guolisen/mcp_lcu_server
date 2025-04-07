@@ -45,7 +45,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
     )
     
     @mcp.tool()
-    def get_network_interfaces() -> str:
+    def network_get_network_interfaces() -> str:
         """Get network interfaces information.
         
         Returns:
@@ -61,7 +61,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_network_connections() -> str:
+    def network_get_network_connections() -> str:
         """Get network connections.
         
         Returns:
@@ -77,7 +77,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_network_stats() -> str:
+    def network_get_network_stats() -> str:
         """Get network statistics.
         
         Returns:
@@ -93,7 +93,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def ping_host(host: str, count: int = 4, timeout: int = 10) -> str:
+    def network_ping_host(host: str, count: int = 4, timeout: int = 10) -> str:
         """Ping a host.
         
         Args:
@@ -114,7 +114,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def traceroute_host(host: str, max_hops: int = 30, timeout: int = 30) -> str:
+    def network_traceroute_host(host: str, max_hops: int = 30, timeout: int = 30) -> str:
         """Trace route to a host.
         
         Args:
@@ -135,7 +135,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def http_get_request(url: str, 
+    def network_http_get_request(url: str, 
                         timeout: int = 30, 
                         follow_redirects: bool = True) -> str:
         """Perform HTTP GET request.
@@ -158,7 +158,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def download_file_from_url(url: str, 
+    def network_download_file_from_url(url: str, 
                               destination: str, 
                               timeout: int = 300) -> str:
         """Download a file from a URL.
@@ -187,7 +187,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def upload_file_to_url(source: str, 
+    def network_upload_file_to_url(source: str, 
                           url: str, 
                           timeout: int = 300,
                           field_name: str = "file") -> str:
@@ -218,7 +218,7 @@ def register_network_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def analyze_network() -> str:
+    def network_analyze_network() -> str:
         """Analyze network configuration and connectivity.
         
         This function analyzes the network configuration and connectivity

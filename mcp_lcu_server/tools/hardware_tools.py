@@ -30,7 +30,7 @@ def register_hardware_tools(mcp: FastMCP) -> None:
     hw_ops = HardwareOperations()
     
     @mcp.tool()
-    def get_system_info() -> str:
+    def hardware_get_system_info() -> str:
         """Get general system information.
         
         Returns:
@@ -46,7 +46,7 @@ def register_hardware_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_hardware_cpu_info() -> str:
+    def hardware_get_hardware_cpu_info() -> str:
         """Get CPU hardware information.
         
         Returns:
@@ -62,7 +62,7 @@ def register_hardware_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_hardware_memory_info() -> str:
+    def hardware_get_hardware_memory_info() -> str:
         """Get memory hardware information.
         
         Returns:
@@ -78,7 +78,7 @@ def register_hardware_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_storage_info() -> str:
+    def hardware_get_storage_info() -> str:
         """Get storage information.
         
         Returns:
@@ -94,7 +94,7 @@ def register_hardware_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_pci_devices() -> str:
+    def hardware_get_pci_devices() -> str:
         """Get information about PCI devices.
         
         Returns:
@@ -110,7 +110,7 @@ def register_hardware_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_usb_devices() -> str:
+    def hardware_get_usb_devices() -> str:
         """Get information about USB devices.
         
         Returns:
@@ -126,7 +126,7 @@ def register_hardware_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_block_devices() -> str:
+    def hardware_get_block_devices() -> str:
         """Get information about block devices.
         
         Returns:
@@ -142,7 +142,7 @@ def register_hardware_tools(mcp: FastMCP) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def analyze_hardware() -> str:
+    def hardware_analyze_hardware() -> str:
         """Analyze hardware configuration and provide insights.
         
         This function analyzes the hardware configuration of the system 

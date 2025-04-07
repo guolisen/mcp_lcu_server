@@ -44,7 +44,7 @@ class MonitoringResources:
                      name="Monitoring Status", 
                      description="Current status of the monitoring subsystem",
                      mime_type="application/json")
-        def get_monitoring_status() -> str:
+        def monitoring_get_monitoring_status() -> str:
             """Get monitoring status."""
             try:
                 status = self.monitoring_ops.get_monitoring_status()
@@ -58,7 +58,7 @@ class MonitoringResources:
                      name="System Status", 
                      description="Current system status from monitoring",
                      mime_type="application/json")
-        def get_system_status() -> str:
+        def monitoring_get_system_status() -> str:
             """Get system status."""
             try:
                 status = self.monitoring_ops.get_system_status()
@@ -72,7 +72,7 @@ class MonitoringResources:
                      name="System Health", 
                      description="Current system health check",
                      mime_type="application/json")
-        def get_system_health() -> str:
+        def monitoring_get_system_health() -> str:
             """Get system health."""
             try:
                 health = self.monitoring_ops.check_system_health()
@@ -86,7 +86,7 @@ class MonitoringResources:
                      name="CPU Metrics", 
                      description="CPU metrics from monitoring",
                      mime_type="application/json")
-        def get_cpu_metrics(count: str) -> str:
+        def monitoring_get_cpu_metrics(count: str) -> str:
             """Get CPU metrics."""
             try:
                 metrics = self.monitoring_ops.get_cpu_metrics(int(count))
@@ -100,7 +100,7 @@ class MonitoringResources:
                      name="Memory Metrics", 
                      description="Memory metrics from monitoring",
                      mime_type="application/json")
-        def get_memory_metrics(count: str) -> str:
+        def monitoring_get_memory_metrics(count: str) -> str:
             """Get memory metrics."""
             try:
                 metrics = self.monitoring_ops.get_memory_metrics(int(count))
@@ -114,7 +114,7 @@ class MonitoringResources:
                      name="Disk Metrics", 
                      description="Disk metrics from monitoring",
                      mime_type="application/json")
-        def get_disk_metrics(count: str) -> str:
+        def monitoring_get_disk_metrics(count: str) -> str:
             """Get disk metrics."""
             try:
                 metrics = self.monitoring_ops.get_disk_metrics(int(count))
@@ -128,7 +128,7 @@ class MonitoringResources:
                      name="Network Metrics", 
                      description="Network metrics from monitoring",
                      mime_type="application/json")
-        def get_network_metrics(count: str) -> str:
+        def monitoring_get_network_metrics(count: str) -> str:
             """Get network metrics."""
             try:
                 metrics = self.monitoring_ops.get_network_metrics(int(count))
@@ -142,7 +142,7 @@ class MonitoringResources:
                      name="System Metrics", 
                      description="System metrics from monitoring",
                      mime_type="application/json")
-        def get_system_metrics(count: str) -> str:
+        def monitoring_get_system_metrics(count: str) -> str:
             """Get system metrics."""
             try:
                 metrics = self.monitoring_ops.get_system_metrics(int(count))
@@ -156,7 +156,7 @@ class MonitoringResources:
                      name="Metrics Types", 
                      description="Available metrics types",
                      mime_type="application/json")
-        def get_metrics_types() -> str:
+        def monitoring_get_metrics_types() -> str:
             """Get available metrics types."""
             try:
                 metrics_types = {

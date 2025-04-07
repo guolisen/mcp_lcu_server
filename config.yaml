@@ -4,7 +4,7 @@ server:
   name: mcp-lcu-server
   transport: sse  # stdio or sse
   port: 8000
-  host: 127.0.0.1
+  host: 192.168.182.128
 
 monitoring:
   enabled: true

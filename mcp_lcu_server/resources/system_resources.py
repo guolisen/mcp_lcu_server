@@ -51,7 +51,7 @@ class SystemResources:
                      name="Linux System Information", 
                      description="Overall system information for the Linux host",
                      mime_type="application/json")
-        def get_system_info() -> str:
+        def system_get_system_info() -> str:
             """Get overall system information."""
             try:
                 system_info = self._get_system_info()
@@ -65,7 +65,7 @@ class SystemResources:
                      name="CPU Information", 
                      description="Detailed CPU information for the Linux host",
                      mime_type="application/json")
-        def get_system_cpu_info() -> str:
+        def system_get_system_cpu_info() -> str:
             """Get detailed CPU information."""
             try:
                 cpu_info = self.cpu_ops.get_cpu_info()
@@ -93,7 +93,7 @@ class SystemResources:
                      name="Memory Information", 
                      description="Detailed memory information for the Linux host",
                      mime_type="application/json")
-        def get_system_memory_info() -> str:
+        def system_get_system_memory_info() -> str:
             """Get detailed memory information."""
             try:
                 memory_stats = self.memory_ops.get_memory_stats()
@@ -107,7 +107,7 @@ class SystemResources:
                      name="Process Information", 
                      description="Process listing for the Linux host",
                      mime_type="application/json")
-        def get_process_info() -> str:
+        def system_get_process_info() -> str:
             """Get process listing."""
             try:
                 processes = self.process_ops.list_processes(include_threads=False, include_username=True)
@@ -121,7 +121,7 @@ class SystemResources:
                      name="Process Details",
                      description="Detailed information about a specific process",
                      mime_type="application/json")
-        def get_process_details(pid: str) -> str:
+        def system_get_process_details(pid: str) -> str:
             """Get detailed information about a specific process."""
             try:
                 process_info = self.process_ops.get_process_info(int(pid))
@@ -137,7 +137,7 @@ class SystemResources:
                      name="Storage Information", 
                      description="Storage information for the Linux host",
                      mime_type="application/json")
-        def get_storage_info() -> str:
+        def system_get_storage_info() -> str:
             """Get storage information."""
             try:
                 storage_info = {
@@ -156,7 +156,7 @@ class SystemResources:
                      name="Network Information", 
                      description="Network information for the Linux host",
                      mime_type="application/json")
-        def get_network_info() -> str:
+        def system_get_network_info() -> str:
             """Get network information."""
             try:
                 network_info = self._get_network_info()
@@ -170,7 +170,7 @@ class SystemResources:
                      name="Hardware Information", 
                      description="Hardware information for the Linux host",
                      mime_type="application/json")
-        def get_hardware_info() -> str:
+        def system_get_hardware_info() -> str:
             """Get hardware information."""
             try:
                 hardware_info = self._get_hardware_info()

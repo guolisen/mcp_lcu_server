@@ -35,7 +35,7 @@ def register_process_tools(mcp: FastMCP, config: Config) -> None:
     )
     
     @mcp.tool()
-    def list_processes(include_threads: bool = False, 
+    def process_list_processes(include_threads: bool = False, 
                       include_username: bool = True,
                       filter_user: Optional[str] = None,
                       sort_by: str = "cpu_percent") -> str:
@@ -66,7 +66,7 @@ def register_process_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_process_info(pid: int, include_threads: bool = True) -> str:
+    def process_get_process_info(pid: int, include_threads: bool = True) -> str:
         """Get detailed information about a process.
         
         Args:
@@ -90,7 +90,7 @@ def register_process_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def list_threads(pid: int) -> str:
+    def process_list_threads(pid: int) -> str:
         """List threads for a process.
         
         Args:
@@ -113,7 +113,7 @@ def register_process_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def kill_process(pid: int, signal_name: str = "SIGTERM") -> str:
+    def process_kill_process(pid: int, signal_name: str = "SIGTERM") -> str:
         """Kill a process.
         
         Args:
@@ -140,7 +140,7 @@ def register_process_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e), "success": False})
     
     @mcp.tool()
-    def search_processes(name: Optional[str] = None,
+    def process_search_processes(name: Optional[str] = None,
                         cmdline: Optional[str] = None,
                         username: Optional[str] = None,
                         include_threads: bool = False) -> str:
@@ -171,7 +171,7 @@ def register_process_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_process_tree(pid: Optional[int] = None) -> str:
+    def process_get_process_tree(pid: Optional[int] = None) -> str:
         """Get process tree.
         
         Args:
@@ -191,7 +191,7 @@ def register_process_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def get_process_limits(pid: int) -> str:
+    def process_get_process_limits(pid: int) -> str:
         """Get process resource limits.
         
         Args:
@@ -214,7 +214,7 @@ def register_process_tools(mcp: FastMCP, config: Config) -> None:
             return json.dumps({"error": str(e)})
     
     @mcp.tool()
-    def analyze_top_processes(count: int = 10, include_threads: bool = False) -> str:
+    def process_analyze_top_processes(count: int = 10, include_threads: bool = False) -> str:
         """Analyze top processes by CPU and memory usage.
         
         Args:

@@ -26,7 +26,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
     """
     
     @mcp.prompt(name="system_overview")
-    def system_overview(system_info: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_system_overview(system_info: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for system overview analysis.
         
         Args:
@@ -63,7 +63,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="cpu_performance_analysis")
-    def cpu_performance_analysis(cpu_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_cpu_performance_analysis(cpu_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for CPU performance analysis.
         
         Args:
@@ -100,7 +100,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="memory_performance_analysis")
-    def memory_performance_analysis(memory_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_memory_performance_analysis(memory_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for memory performance analysis.
         
         Args:
@@ -137,7 +137,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="storage_performance_analysis")
-    def storage_performance_analysis(storage_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_storage_performance_analysis(storage_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for storage performance analysis.
         
         Args:
@@ -174,7 +174,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="process_analysis")
-    def process_analysis(process_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_process_analysis(process_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for process analysis.
         
         Args:
@@ -211,7 +211,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="system_health_analysis")
-    def system_health_analysis(health_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_system_health_analysis(health_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for system health analysis.
         
         Args:
@@ -248,7 +248,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="network_analysis")
-    def network_analysis(network_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_network_analysis(network_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for network analysis.
         
         Args:
@@ -285,7 +285,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="system_troubleshooting")
-    def system_troubleshooting(issue_description: Optional[str] = None, system_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_system_troubleshooting(issue_description: Optional[str] = None, system_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for system troubleshooting.
         
         Args:
@@ -334,7 +334,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="security_audit")
-    def security_audit(security_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_security_audit(security_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for security audit.
         
         Args:
@@ -371,7 +371,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="performance_optimization")
-    def performance_optimization(system_data: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_performance_optimization(system_data: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for performance optimization.
         
         Args:
@@ -408,7 +408,7 @@ def register_analysis_prompts(mcp: FastMCP) -> None:
         return messages
     
     @mcp.prompt(name="command_assistant")
-    def command_assistant(task_description: Optional[str] = None) -> List[PromptMessage]:
+    def analysis_command_assistant(task_description: Optional[str] = None) -> List[PromptMessage]:
         """Create a prompt for command assistant.
         
         Args:

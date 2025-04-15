@@ -32,6 +32,11 @@ process:
   allow_kill: false
   allowed_users: []
 
+user:
+  enable_history: true
+  max_history_entries: 100
+  allowed_users: []  # Empty list means all users are allowed
+
 command:
   enabled: true
   allowed_commands:

@@ -90,6 +90,20 @@ class ProcessConfig(BaseModel):
     allowed_users: List[str] = Field(default=[])
 
 
+class UserConfig(BaseModel):
+    """User operations configuration."""
+    
+    enable_history: bool = True
+    max_history_entries: int = 100
+    allowed_users: List[str] = Field(default=[])
+    
+    @validator("max_history_entries")
+    def validate_max_history_entries(cls, v):
+        if v < 1:
+            raise ValueError(f"Max history entries must be at least 1, got {v}")
+        return v
+
+
 class CommandConfig(BaseModel):
     """Command execution configuration."""
     
@@ -122,6 +136,7 @@ class Config(BaseSettings):
     filesystem: FilesystemConfig = Field(default_factory=FilesystemConfig)
     network: NetworkConfig = Field(default_factory=NetworkConfig)
     process: ProcessConfig = Field(default_factory=ProcessConfig)
+    user: UserConfig = Field(default_factory=UserConfig)
     command: CommandConfig = Field(default_factory=CommandConfig)
     
     model_config = SettingsConfigDict(

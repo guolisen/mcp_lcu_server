@@ -33,6 +33,7 @@ from mcp_lcu_server.tools.hardware_tools import register_hardware_tools
 from mcp_lcu_server.tools.network_tools import register_network_tools
 from mcp_lcu_server.tools.monitoring_tools import register_monitoring_tools
 from mcp_lcu_server.tools.command_tools import register_command_tools
+from mcp_lcu_server.tools.user_tools import register_user_tools
 from mcp_lcu_server.prompts.analysis_prompts import register_analysis_prompts
 from mcp_lcu_server.resources.system_resources import register_system_resources
 from mcp_lcu_server.resources.monitoring_resources import register_monitoring_resources
@@ -120,6 +121,12 @@ def create_server(config: Optional[Config] = None) -> FastMCP:
         register_command_tools(mcp, config)
     except Exception as e:
         logger.error(f"Error registering command tools: {e}")
+    
+    try:
+        logger.debug("Registering user tools")
+        register_user_tools(mcp, config)
+    except Exception as e:
+        logger.error(f"Error registering user tools: {e}")
     
     # Register prompts
     register_analysis_prompts(mcp)

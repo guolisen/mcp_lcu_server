@@ -3,8 +3,8 @@
 server:
   name: mcp-lcu-server
   transport: sse  # stdio or sse
-  port: 8000
-  host: 192.168.182.128
+  port: 8012
+  host: 127.0.0.1
 
 monitoring:
   enabled: true
@@ -31,3 +31,15 @@ network:
 process:
   allow_kill: false
   allowed_users: []
+
+command:
+  enabled: true
+  allowed_commands:
+    - "*"
+  blocked_commands:
+    - "rm -rf /*"
+    - ":(){ :|:& };:"  # Fork bomb
+  timeout: 60
+  max_output_size: 1048576  # 1MB
+  allow_sudo: false
+  allow_scripts: true

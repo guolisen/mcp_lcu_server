@@ -90,6 +90,30 @@ class ProcessConfig(BaseModel):
     allowed_users: List[str] = Field(default=[])
 
 
+class CommandConfig(BaseModel):
+    """Command execution configuration."""
+    
+    enabled: bool = True
+    allowed_commands: List[str] = Field(default=["*"])  # Patterns of allowed commands
+    blocked_commands: List[str] = Field(default=[])     # Patterns of blocked commands
+    timeout: int = 60  # Default timeout in seconds
+    max_output_size: int = 1024 * 1024  # 1MB
+    allow_sudo: bool = False
+    allow_scripts: bool = True
+    
+    @validator("timeout")
+    def validate_timeout(cls, v):
+        if v < 1:
+            raise ValueError(f"Timeout must be at least 1 second, got {v}")
+        return v
+    
+    @validator("max_output_size")
+    def validate_max_output_size(cls, v):
+        if v < 0:
+            raise ValueError(f"Max output size must be non-negative, got {v}")
+        return v
+
+
 class Config(BaseSettings):
     """Main configuration."""
     
@@ -98,6 +122,7 @@ class Config(BaseSettings):
     filesystem: FilesystemConfig = Field(default_factory=FilesystemConfig)
     network: NetworkConfig = Field(default_factory=NetworkConfig)
     process: ProcessConfig = Field(default_factory=ProcessConfig)
+    command: CommandConfig = Field(default_factory=CommandConfig)
     
     model_config = SettingsConfigDict(
         env_prefix="MCP_LCU_SERVER_",

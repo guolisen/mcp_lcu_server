@@ -22,6 +22,7 @@ from mcp_lcu_server.config import Config, load_config
 from mcp_lcu_server.linux.cpu import CPUOperations
 from mcp_lcu_server.linux.memory import MemoryOperations
 from mcp_lcu_server.linux.process import ProcessOperations
+from mcp_lcu_server.linux.command import CommandOperations
 # Import tool registration functions
 from mcp_lcu_server.tools.cpu_tools import register_cpu_tools
 from mcp_lcu_server.tools.memory_tools import register_memory_tools
@@ -31,6 +32,7 @@ from mcp_lcu_server.tools.filesystem_tools import register_filesystem_tools
 from mcp_lcu_server.tools.hardware_tools import register_hardware_tools
 from mcp_lcu_server.tools.network_tools import register_network_tools
 from mcp_lcu_server.tools.monitoring_tools import register_monitoring_tools
+from mcp_lcu_server.tools.command_tools import register_command_tools
 from mcp_lcu_server.prompts.analysis_prompts import register_analysis_prompts
 from mcp_lcu_server.resources.system_resources import register_system_resources
 from mcp_lcu_server.resources.monitoring_resources import register_monitoring_resources
@@ -112,6 +114,12 @@ def create_server(config: Optional[Config] = None) -> FastMCP:
         register_monitoring_tools(mcp, config)
     except Exception as e:
         logger.error(f"Error registering monitoring tools: {e}")
+    
+    try:
+        logger.debug("Registering command tools")
+        register_command_tools(mcp, config)
+    except Exception as e:
+        logger.error(f"Error registering command tools: {e}")
     
     # Register prompts
     register_analysis_prompts(mcp)

@@ -228,6 +228,24 @@ The server provides access to various system operations, which can be potentiall
 - Restrict the ability to kill processes
 - Run the server with appropriate permissions
 
+### Command Execution Security
+
+The server includes a powerful command execution tool that allows running shell commands on the host system. This feature can pose significant security risks if not properly configured or if used in untrusted environments.
+
+**Warning:** If you don't want to use the command execution functionality, you have two options:
+1. Disable it by setting `command.enabled: false` in your configuration file:
+   ```yaml
+   command:
+     enabled: false
+   ```
+2. Remove the MCP tools related to command execution by modifying your server implementation.
+
+When command execution is enabled, consider these additional security measures:
+- Use `allowed_commands` to restrict which commands can be executed
+- Use `blocked_commands` to explicitly block dangerous commands
+- Set appropriate timeouts and output size limits
+- Disable sudo access with `allow_sudo: false` unless absolutely necessary
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

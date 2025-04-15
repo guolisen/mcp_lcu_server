@@ -38,7 +38,7 @@ user:
   allowed_users: []  # Empty list means all users are allowed
 
 command:
-  enabled: false
+  enabled: true
   allowed_commands:
     - "*"
   blocked_commands:
@@ -47,4 +47,4 @@ command:
   timeout: 60
   max_output_size: 1048576  # 1MB
   allow_sudo: false
-  allow_scripts: false
+  allow_scripts: true

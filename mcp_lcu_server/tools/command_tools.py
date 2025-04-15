@@ -55,7 +55,29 @@ def register_command_tools(mcp: FastMCP, config: Config) -> None:
             capture_output: Whether to capture output
         
         Returns:
-            JSON string with command execution result
+            JSON string with command execution result containing:
+            {
+                "id": "cmd_1744711661_6",                   # Unique command identifier (timestamp_counter format)
+                "command": "/bin/bash /tmp/tmp9b37bcf5.sh", # The executed command
+                "success": true,                            # Whether command succeeded (return code 0)
+                "stdout": "Hello!!!\n...",                  # Standard output (may be truncated if exceeds max_output_size)
+                "stderr": "",                               # Standard error output
+                "return_code": 0,                           # Command's exit code (0 typically means success)
+                "error": null,                              # Error message if an error occurred (null otherwise)
+                "completed": true,                          # Whether command completed execution
+                "start_time": "2025-04-15T10:15:00.123456", # ISO format timestamp when command started
+                "duration": 0.125,                          # Execution time in seconds
+                "timeout": 60,                              # Timeout value in seconds
+                "shell": true,                              # Whether shell was used
+                "cwd": "/root/code"                         # Working directory where command was executed
+            }
+            
+            On error:
+            {
+                "success": false,                           # Indicates failure
+                "error": "Command execution is disabled",   # Error message describing what went wrong
+                "command": "rm -rf /"                       # The command that caused the error
+            }
         """
         logger.info(f"Executing command: {command}")
         
@@ -97,7 +119,19 @@ def register_command_tools(mcp: FastMCP, config: Config) -> None:
             cwd: Working directory
         
         Returns:
-            JSON string with script execution result
+            JSON string with script execution result containing all fields from command_execute plus:
+            {
+                # ... all fields from command execution result
+                "script_path": "/tmp/tmp9b37bcf5.sh",       # Path to the temporary script file
+                "interpreter": "/bin/bash"                  # Path to the interpreter used
+            }
+            
+            On error:
+            {
+                "success": false,                           # Indicates failure
+                "error": "Script execution is disabled",    # Error message describing what went wrong
+                "interpreter": "/bin/bash"                  # The interpreter that was specified
+            }
         """
         logger.info(f"Executing script with interpreter: {interpreter}")
         
@@ -138,7 +172,23 @@ def register_command_tools(mcp: FastMCP, config: Config) -> None:
             command_id: Command ID
         
         Returns:
-            JSON string with command status
+            JSON string with command status:
+            {
+                "found": true,                              # Whether the command was found
+                "status": {                                 # Command status if found
+                    # ... all fields from command execution result
+                    "id": "cmd_1744711661_6",
+                    "command": "ls -la",
+                    "success": true,
+                    # ... other fields
+                }
+            }
+            
+            If command not found:
+            {
+                "found": false,                             # Indicates command was not found
+                "error": "Command with ID cmd_1744711661_6 not found" # Error message
+            }
         """
         logger.info(f"Getting status for command ID: {command_id}")
         
@@ -170,7 +220,26 @@ def register_command_tools(mcp: FastMCP, config: Config) -> None:
             limit: Maximum number of history entries to return
         
         Returns:
-            JSON string with command history
+            JSON string with command history:
+            {
+                "count": 2,                                 # Number of history entries returned
+                "history": [                                # Array of command history entries
+                    {
+                        "id": "cmd_1744711661_5",           # Command ID
+                        "command": "ls -la",                # Command that was executed
+                        "start_time": "2025-04-15T10:14:50.123456", # When command started
+                        "cwd": "/root/code"                 # Working directory
+                    },
+                    # ... more history entries
+                ]
+            }
+            
+            On error:
+            {
+                "count": 0,                                 # Zero entries
+                "history": [],                              # Empty history array
+                "error": "Error message"                    # Error message describing what went wrong
+            }
         """
         logger.info(f"Listing command history (limit={limit})")
         

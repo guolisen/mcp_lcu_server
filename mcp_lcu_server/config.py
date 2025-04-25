@@ -128,6 +128,19 @@ class CommandConfig(BaseModel):
         return v
 
 
+class LogsConfig(BaseModel):
+    """Logs operations configuration."""
+    
+    paths: Dict[str, str] = Field(default_factory=dict)
+    max_entries: int = 1000  # Maximum number of log entries to return
+    
+    @validator("max_entries")
+    def validate_max_entries(cls, v):
+        if v < 1:
+            raise ValueError(f"Max entries must be at least 1, got {v}")
+        return v
+
+
 class Config(BaseSettings):
     """Main configuration."""
     
@@ -138,6 +151,7 @@ class Config(BaseSettings):
     process: ProcessConfig = Field(default_factory=ProcessConfig)
     user: UserConfig = Field(default_factory=UserConfig)
     command: CommandConfig = Field(default_factory=CommandConfig)
+    logs: LogsConfig = Field(default_factory=LogsConfig)
     
     model_config = SettingsConfigDict(
         env_prefix="MCP_LCU_SERVER_",

@@ -48,3 +48,12 @@ command:
   max_output_size: 1048576  # 1MB
   allow_sudo: false
   allow_scripts: true
+
+logs:
+  # Custom log paths (optional, standard paths are used by default)
+  paths:
+    # syslog: /var/log/syslog
+    # auth: /var/log/auth.log
+    # apache_access: /var/log/apache2/access.log
+    # apache_error: /var/log/apache2/error.log
+  max_entries: 1000  # Maximum number of log entries to return by default

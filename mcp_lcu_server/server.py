@@ -34,11 +34,13 @@ from mcp_lcu_server.tools.network_tools import register_network_tools
 from mcp_lcu_server.tools.monitoring_tools import register_monitoring_tools
 from mcp_lcu_server.tools.command_tools import register_command_tools
 from mcp_lcu_server.tools.user_tools import register_user_tools
+from mcp_lcu_server.tools.log_tools import register_log_tools
 from mcp_lcu_server.prompts.analysis_prompts import register_analysis_prompts
 from mcp_lcu_server.resources.system_resources import register_system_resources
 from mcp_lcu_server.resources.monitoring_resources import register_monitoring_resources
 from mcp_lcu_server.resources.filesystem_resources import register_filesystem_resources
 from mcp_lcu_server.resources.network_resources import register_network_resources
+from mcp_lcu_server.resources.log_resources import register_log_resources
 
 logger = logging.getLogger(__name__)
 
@@ -128,6 +130,12 @@ def create_server(config: Optional[Config] = None) -> FastMCP:
     except Exception as e:
         logger.error(f"Error registering user tools: {e}")
     
+    try:
+        logger.debug("Registering log tools")
+        register_log_tools(mcp, config)
+    except Exception as e:
+        logger.error(f"Error registering log tools: {e}")
+    
     # Register prompts
     register_analysis_prompts(mcp)
     
@@ -136,6 +144,7 @@ def create_server(config: Optional[Config] = None) -> FastMCP:
     register_monitoring_resources(mcp, config)
     register_filesystem_resources(mcp, config)
     register_network_resources(mcp, config)
+    register_log_resources(mcp, config)
     
     return mcp
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcp_lcu_server"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP Linux Common Utility Server"
 authors = [
     {name = "Lewis Guo", email = "guolisen@gmail.com"}

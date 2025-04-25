@@ -18,6 +18,7 @@ The Model Context Protocol (MCP) Linux Common Utility (LCU) Server is a Python-b
 - **Hardware Operations**: Hardware detection and information.
 - **Network Operations**: Interface information, connectivity testing, and data transfer.
 - **Monitoring Operations**: System status monitoring and health checks.
+- **Log Operations**: Access to system logs, log analysis, and statistics across multiple sources.
 
 ## Installation
 
@@ -36,7 +37,9 @@ The Model Context Protocol (MCP) Linux Common Utility (LCU) Server is a Python-b
 
 2. Install the package:
    ```
-   pip install -e .
+   uv venv
+   source .venv/bin/activate
+   python -m build
    ```
 
 ## Configuration
@@ -84,6 +87,13 @@ network:
 process:
   allow_kill: false
   allowed_users: []
+
+logs:
+  # Custom log paths (optional)
+  paths: 
+    # syslog: /var/log/syslog
+    # auth: /var/log/auth.log
+  max_entries: 1000  # Maximum entries to return
 ```
 
 ## Usage
@@ -196,6 +206,19 @@ The server provides various tools for interacting with the Linux system:
 - `get_system_load`: Get system load
 - `analyze_system_performance`: Analyze system performance
 
+#### Log Tools
+- `log_list_available_logs`: List all available log sources on the system
+- `log_get_journal_logs`: Get logs from the systemd journal
+- `log_get_system_logs`: Get logs from system log files
+- `log_get_dmesg`: Get kernel logs from dmesg
+- `log_get_application_logs`: Get logs for a specific application
+- `log_get_audit_logs`: Get audit logs
+- `log_get_boot_logs`: Get boot logs
+- `log_get_service_status_logs`: Get logs related to a specific systemd service
+- `log_search_logs`: Search across multiple log sources
+- `log_analyze_logs`: Analyze logs to identify patterns and issues
+- `log_get_statistics`: Get statistics about log volume and characteristics
+
 ### Resources
 
 The server also provides various resources that can be accessed via MCP:
@@ -224,6 +247,19 @@ The server also provides various resources that can be accessed via MCP:
 - `linux://network/ping/{host}`: Ping a host
 - `linux://network/traceroute/{host}`: Trace route to a host
 - `linux://network/analysis`: Network analysis
+
+#### Log Resources
+- `linux://logs/available`: List of available log sources
+- `linux://logs/journal/{parameters}`: Logs from systemd journal
+- `linux://logs/system/{log_type}/{parameters}`: Logs from system log files
+- `linux://logs/kernel/{count}`: Logs from kernel ring buffer (dmesg)
+- `linux://logs/application/{app_name}/{parameters}`: Logs for specific applications
+- `linux://logs/audit/{parameters}`: Logs from the Linux audit system
+- `linux://logs/boot/{count}`: Logs related to system boot
+- `linux://logs/service/{service}/{count}`: Logs for specific systemd services
+- `linux://logs/search/{query}/{parameters}`: Search across multiple log sources
+- `linux://logs/analysis/{parameters}`: Analysis of log patterns and issues
+- `linux://logs/statistics/{parameters}`: Statistics about log volume and characteristics
 
 ## Security Considerations
 
